@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<!--<div id="vue_det">-->
+<!--    <h1>site : {{site}}}</h1>-->
+<!--    <h1>url : {{url}}</h1>-->
+<!--    <h1>Alexa : {{alexa}}</h1>-->
+<!--</div>-->
+<div id="app">
+    <ol>
+        <li v-for="site in sites">
+            {{site.name}}
+        </li>
+    </ol>
+</div>
+<div id="app3">
+    <ul>
+<!--        <li v-for="value in object">-->
+        <li v-for="(value,key,index) in object">
+<!--        <li v-for="(value,key) in object">-->
+<!--            {{value}}-->
+            {{index}} : {{key}} : {{value}}
+        </li>
+    </ul>
+</div>
+<div id="app2">
+    <ul>
+        <template v-for="site in sites">
+            <li>{{site.name}}</li>
+            <li>------------------------</li>
+        </template>
+    </ul>
+</div>
+<div id="app4">
+    <ul>
+        <li v-for="n in 10">
+            {{n}}
+        </li>
+    </ul>
+</div>
+<div id="app5">
+    <p style="font-size: 25px">计数器: {{counter}}</p>
+<button @click="counter++" style="font-size: 25px;">点我</button>
+</div>
+<script type="text/javascript">
+    // var data = {site : "菜鸟教程",url:"www.runoob.com",alexa:10000}
+    // var vm = new Vue({el: '#vue_det',
+    // data: data})
+    //
+    // document.write(vm.site === data.site)
+    // new Vue({
+    //     el: '#app2',
+    //     data: {
+    //        sites: [
+    //            {name:'Runoob'},
+    //            {name:'Google'},
+    //            {name:'Taobao'}
+    //        ]
+    //     }
+    // })
+
+    new Vue({
+        el: '#app3',
+        data: {
+            object: {
+                name: '菜鸟教程',
+                url: 'http://www.runoob.com',
+                slogan: '学的不仅仅是技术，更是梦想！'
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app4'
+    })
+
+    var vmm = new Vue({
+        el: '#app5',
+        data: {
+            counter:1
+        }
+    });
+
+    vmm.$watch('counter',function (nval,oval) {
+        alert('计数器值的变化 :'+oval+' 变为 '+nval + '!');
+    });
+
+
+
+
+</script>
+
+</body>
+</html>
